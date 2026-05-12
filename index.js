@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 // Proxy all requests to Google Generative Language API
 app.all("*", (req, res) => {
   const qs = req.url.includes("?") ? req.url.slice(req.url.indexOf("?")) : "";
-  const targetPath = `/v1beta${req.path}${qs}`;
+  const targetPath = `${req.path}${qs}`;
   const bodyData = (req.method !== "GET" && req.method !== "HEAD")
     ? JSON.stringify(req.body)
     : undefined;
