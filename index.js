@@ -11,6 +11,9 @@ app.use((req, res, next) => {
   next();
 });
 
+// Health check
+app.get("/health", (req, res) => res.json({ status: "ok" }));
+
 // Proxy all requests to Google Generative Language API
 app.all("*", (req, res) => {
   const qs = req.url.includes("?") ? req.url.slice(req.url.indexOf("?")) : "";
